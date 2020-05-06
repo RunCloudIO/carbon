@@ -1521,6 +1521,26 @@ func (c *Carbon) DiffForHumans(d *Carbon, abs, absolute, short bool) (string, er
 	return c.Translator.chooseTrans(transID, t), nil
 }
 
+// StartOfHour returns the time at the start of every hour
+func (c *Carbon) StartOfMinute() *Carbon {
+	return create(c.Year(), c.Month(), c.Day(), c.Hour(), c.Minute(), 0, 0, c.Location())
+}
+
+// EndOfHour returns the time at the start of every hour
+func (c *Carbon) EndOfMinute() *Carbon {
+	return create(c.Year(), c.Month(), c.Day(), c.Hour(), c.Minute(), 59, maxNSecs, c.Location())
+}
+
+// StartOfHour returns the time at the start of every hour
+func (c *Carbon) StartOfHour() *Carbon {
+	return create(c.Year(), c.Month(), c.Day(), c.Hour(), 0, 0, 0, c.Location())
+}
+
+// EndOfHour returns the time at the start of every hour
+func (c *Carbon) EndOfHour() *Carbon {
+	return create(c.Year(), c.Month(), c.Day(), c.Hour(), 59, 59, maxNSecs, c.Location())
+}
+
 // StartOfDay returns the time at 00:00:00 of the same day
 func (c *Carbon) StartOfDay() *Carbon {
 	return create(c.Year(), c.Month(), c.Day(), 0, 0, 0, 0, c.Location())
